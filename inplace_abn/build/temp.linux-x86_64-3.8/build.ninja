@@ -1,0 +1,29 @@
+ninja_required_version = 1.3
+cxx = c++
+nvcc = /usr/local/cuda/bin/nvcc
+
+cflags = -pthread -B /home/tanweixiong/anaconda3/envs/torch/compiler_compat -Wl,--sysroot=/ -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -fPIC -DWITH_CUDA=1 -I/data/tanweixiong/pathology/inplace_abn/include -I/home/tanweixiong/anaconda3/envs/torch/lib/python3.8/site-packages/torch/include -I/home/tanweixiong/anaconda3/envs/torch/lib/python3.8/site-packages/torch/include/torch/csrc/api/include -I/home/tanweixiong/anaconda3/envs/torch/lib/python3.8/site-packages/torch/include/TH -I/home/tanweixiong/anaconda3/envs/torch/lib/python3.8/site-packages/torch/include/THC -I/usr/local/cuda/include -I/home/tanweixiong/anaconda3/envs/torch/include/python3.8 -c
+post_cflags = -O3 -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=_backend -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++14
+cuda_cflags = -DWITH_CUDA=1 -I/data/tanweixiong/pathology/inplace_abn/include -I/home/tanweixiong/anaconda3/envs/torch/lib/python3.8/site-packages/torch/include -I/home/tanweixiong/anaconda3/envs/torch/lib/python3.8/site-packages/torch/include/torch/csrc/api/include -I/home/tanweixiong/anaconda3/envs/torch/lib/python3.8/site-packages/torch/include/TH -I/home/tanweixiong/anaconda3/envs/torch/lib/python3.8/site-packages/torch/include/THC -I/usr/local/cuda/include -I/home/tanweixiong/anaconda3/envs/torch/include/python3.8 -c
+cuda_post_cflags = -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -DTORCH_API_INCLUDE_EXTENSION_H -DTORCH_EXTENSION_NAME=_backend -D_GLIBCXX_USE_CXX11_ABI=0 -gencode=arch=compute_75,code=sm_75 -std=c++14
+ldflags = 
+
+rule compile
+  command = $cxx -MMD -MF $out.d $cflags -c $in -o $out $post_cflags
+  depfile = $out.d
+  deps = gcc
+
+rule cuda_compile
+  command = $nvcc $cuda_cflags -c $in -o $out $cuda_post_cflags
+
+
+
+build /data/tanweixiong/pathology/inplace_abn/build/temp.linux-x86_64-3.8/src/inplace_abn_cuda.o: cuda_compile /data/tanweixiong/pathology/inplace_abn/src/inplace_abn_cuda.cu
+build /data/tanweixiong/pathology/inplace_abn/build/temp.linux-x86_64-3.8/src/inplace_abn_cpu.o: compile /data/tanweixiong/pathology/inplace_abn/src/inplace_abn_cpu.cpp
+build /data/tanweixiong/pathology/inplace_abn/build/temp.linux-x86_64-3.8/src/inplace_abn.o: compile /data/tanweixiong/pathology/inplace_abn/src/inplace_abn.cpp
+build /data/tanweixiong/pathology/inplace_abn/build/temp.linux-x86_64-3.8/src/utils.o: compile /data/tanweixiong/pathology/inplace_abn/src/utils.cpp
+
+
+
+
+
