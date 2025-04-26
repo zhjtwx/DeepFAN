@@ -43,5 +43,5 @@ This article mainly introduces the training and reasoning of the main framework;
       - resume = Save the trained model path
       - save_csv: Result output
 ### Data
-    Each CT data (dicom format) was cut into 128×128×128 patches centered on the nodule and placed in the data/patch_nii folder. Here we store 5 cases as a reference. Detailed data preprocessing details can be found in the article description.
+Each CT data (dicom format) was cut into 128×128×128 patches centered on the nodule and placed in the data/patch_nii folder. Here we store 5 cases as a reference. Detailed data preprocessing details can be found in the article description.
       
