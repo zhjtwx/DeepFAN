@@ -36,13 +36,13 @@ data_mode = 'deepFan_Benign_and_malignant_registration_pathology'
 
 if data_mode == 'deepFan_Benign_and_malignant_registration_pathology':
     base_list_dir = './'
-    train_set_dir = base_list_dir + 'deepfan_train.csv'
+    train_set_dir = base_list_dir + 'data/deepfan_test.csv'
     val_set_dirs = [
-        base_list_dir + 'deepfan_test.csv',
+        base_list_dir + 'data/deepfan_test.csv',
     ]
     val_set_dir_inf = ''
     save_csv = [
-        base_list_dir + 'deepfan_test_result.csv',
+        base_list_dir + 'data/deepfan_test.csv',
     ]
     sampler_list_dir = train_set_dir + '_weight.txt'
     n_classes = 2
