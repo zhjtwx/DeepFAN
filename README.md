@@ -66,7 +66,7 @@ The first column (mask_img) here stores the path of the cut patch (which is also
 4.Context Information: Our training experience also indicates that providing sufficient perinodular (xy-plane) context around the nodule significantly improves model performance. Ensure that the input includes enough surrounding tissue information in the xy direction for optimal results.
 
 ### Demo
-
+The size of the five cases we give is 128×128×128, and the format is nii, which can be viewed using itk-snap. After inputting into DeepFAN, the predicted probability is output, where the label corresponding to each case is in the ./sample_data/deepfan_test.csv file, and the output probability is in the ./sample_data/result.csv file.
 
 
    
