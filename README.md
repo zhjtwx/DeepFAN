@@ -41,9 +41,35 @@ This article mainly introduces the training and reasoning of the main framework;
       - inference_mode = Ture
       - model_name = 'fusion'
       - resume = Save the trained model path
-      - save_csv: Result output
+      - save_csv: Result output(For details on the output format, see the ./sample_data/result.csv file.)
 ### Sample Data
 Each CT data (nii format) was cropped into 128×128×128 patches centered on the nodule and placed in the sample_data/patch_nii folder. Here we upload chest CT images of 5 cases from our dataset for demo purpose. Detailed data preprocessing details can be found in the submitted manuscript. Please note that the Sample Data is only provided to allow users to verify the workflow of the provided codes. Since the model weights are a key component of the DeepFAN model, which was derived from a commercial software, we are unable to disclose the specific values of the model weights at the moment. Users can train the model using their own datasets to get their own model weights. Interested researchers can submit a formal request via corresponding author’s email (Y.Y.), and we will consider granting access on a case-by-case basis following a qualification review.
-    #### Contents of the file './sample_data/deepfan_test.csv'
+
+    # ./sample_data/deepfan_test.csv file content：
+    
+| mask_img | label_mb | label_lb | label_sp | label_dy |
+| :----- | :-----: | -----: | -----: | -----: |
+| ./sample_data/nii_patch/case_1.nii.gz | 0 | 0 | 1 | 1 |
+| ... | ... |  ... |  ... |  ... |
+
+The first column (mask_img) here stores the path of the cut patch (which is also the image path of the model input), the second column (label_mb) indicates the benign or malignant label (0/benign, 1/malignant), the third column (label_lb) indicates whether the lung nodule is lobulation (0/no, 1/yes), the fourth column (label_sp) indicates whether the lung nodule has Spiculation (0/no, 1/yes), and the fifth column (label_dy) indicates the density type label (0/Ground-glass, 1/Part-solid, 2/solid).
+
+    # ./sample_data/result.csv file content：
+
+### Reproduction Notes and Important Considerations
+1.Data Volume: The training process requires as much data as possible. In our experiments, we used over 10,000 CT cases. We have not tested the model with smaller datasets, but in theory, more data will generally lead to better model performance.
+
+2.Image Preprocessing and Data Augmentation: The preprocessing and augmentation methods used in our study are described in the original paper. We did not experiment with additional or alternative augmentation techniques. The effectiveness of different preprocessing or augmentation strategies should be validated through further experiments.
+
+3.3D Model Input: During training, we found that 3D input models are better at capturing contextual information and consistently outperform 2D models. As a result, we abandoned 2D models at an early stage and recommend using 3D models for this task.
+
+4.Context Information: Our training experience also indicates that providing sufficient perinodular (xy-plane) context around the nodule significantly improves model performance. Ensure that the input includes enough surrounding tissue information in the xy direction for optimal results.
+
+### Demo
+
+
+
+   
+
     
       
