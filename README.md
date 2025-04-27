@@ -35,7 +35,7 @@ This article mainly introduces the training and reasoning of the main framework;
       - inference_mode = False
       - model_name = 'fusion'
       - train_set_dir: image name and label csv file path of training data, please refer to the format of './sample_data/deepfan_test.csv' file.
-      - val_set_dirs: image name and label csv file path of validation data, the format is the same as 'train_set_dir'.
+      - val_set_dirs: image name and label csv file path of validation data, the format is the same as 'train_set_dir'. Note that during inference, the labels here do not participate in the model update calculation, but are only for easier storage and statistics.
       - mode_save_base_dir: Model output address
     - infer task: config.py
       - inference_mode = Ture
@@ -56,6 +56,13 @@ The first column (mask_img) here stores the path of the cut patch (which is also
 
     # ./sample_data/result.csv file content：
 
+| p_1 | p_2 | label | file_name |
+| :----- | :-----: | -----: | -----: |
+| 0 | 0 | 0 | 1 |
+| ... | ... |  ... |  ... |
+
+Here, the first column (p_1) stores the probability that the model outputs benign results, the second column (p_2) stores the probability that the model outputs malignant results (p_1+p_2=1), and the third column (label) stores the benign and malignant labels of the case. Note: the labels of the input files are stored here. The fourth column (file_name) stores the file path of the patch of the case. Note: the file path of the input file is stored here.
+
 ### Reproduction Notes and Important Considerations
 1.Data Volume: The training process requires as much data as possible. In our experiments, we used over 10,000 CT cases. We have not tested the model with smaller datasets, but in theory, more data will generally lead to better model performance.
 
@@ -66,7 +73,7 @@ The first column (mask_img) here stores the path of the cut patch (which is also
 4.Context Information: Our training experience also indicates that providing sufficient perinodular (xy-plane) context around the nodule significantly improves model performance. Ensure that the input includes enough surrounding tissue information in the xy direction for optimal results.
 
 ### Demo
-The size of the five cases we give is 128×128×128, and the format is nii, which can be viewed using itk-snap. After inputting into DeepFAN, the predicted probability is output, where the label corresponding to each case is in the ./sample_data/deepfan_test.csv file, and the output probability is in the ./sample_data/result.csv file.
+The size of the five cases we give is 128×128×128, and the format is nii, which can be viewed using itk-snap. After inputting into DeepFAN, the predicted probability is output, where the label corresponding to each case is in the ./sample_data/deepfan_test.csv file, and the output probability is in the ./sample_data/result.csv file. The average inference time for each case is about 0.5s.
 
 
    
