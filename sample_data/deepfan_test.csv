@@ -1,0 +1,6 @@
+mask_img,label_mb,label_lb,label_sp,label_dy
+./sample_data/nii_patch/case_1.nii.gz,0,0,1,1
+./sample_data/nii_patch/case_2.nii.gz,1,1,1,2
+./sample_data/nii_patch/case_3.nii.gz,1,0,1,1
+./sample_data/nii_patch/case_4.nii.gz,0,0,1,0
+./sample_data/nii_patch/case_5.nii.gz,1,1,1,1
