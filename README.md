@@ -1,7 +1,7 @@
 # DeepFAN
-Benign and malignant registration model
+DeepFAN was a well-designed deep learning model to discriminate malignant nodules from benign ones utilizing chest CT scans.
 ## Introduction
-This repository contains the main source code of our benign and malignant model (deepFan).
+This repository contains the main source code of our benign and malignant model (DeepFAN).
 ### Prerequisites
 - Ubuntu 16.04.4 LTS
 - Python 3.6.13
@@ -10,7 +10,7 @@ This repository contains the main source code of our benign and malignant model 
 This repository has been tested on NVIDIA TITANXP. Configurations (e.g batch size, image patch size) may need to be changed on different platforms.
 
 ### Installation
-Install dependencies:
+Install dependencies: The requirements.txt file stores the installation packages that the model depends on. Please install as follows. The installation time should not exceed two hours under normal circumstances.
 
 ```
 pip install -r requirements.txt
@@ -42,6 +42,6 @@ This article mainly introduces the training and reasoning of the main framework;
       - model_name = fusion
       - resume = Save the trained model path
       - save_csv: Result output
-### Data
-Each CT data (nii format) was cut into 128×128×128 patches centered on the nodule and placed in the data/patch_nii folder. Here we store 5 cases as a reference. Detailed data preprocessing details can be found in the article description.
+### Sample Data
+Each CT data (nii format) was cropped into 128×128×128 patches centered on the nodule and placed in the data/patch_nii folder. Here we upload chest CT images of 5 cases from our dataset for demo purpose. Detailed data preprocessing details can be found in the submitted manuscript. Please note that the Sample Data is only provided to allow users to verify the workflow of the provided codes. Since the model weights are a key component of the DeepFAN model, which was derived from a commercial software, we are unable to disclose the specific values of the model weights at the moment. Users can train the model using their own datasets to get their own model weights. Interested researchers can submit a formal request via corresponding author’s email (Y.Y.), and we will consider granting access on a case-by-case basis following a qualification review.
       
