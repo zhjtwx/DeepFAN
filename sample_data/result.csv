@@ -1,0 +1,6 @@
+p_1,p_2,label,file_name
+0.178988528,0.821011472,0,./sample_data/nii_patch/case_1.nii.gz
+0.683356249,0.316643751,1,./sample_data/nii_patch/case_2.nii.gz
+0.185423326,0.814576674,1,./sample_data/nii_patch/case_3.nii.gz
+0.290579569,0.709420431,0,./sample_data/nii_patch/case_4.nii.gz
+0.052129209,0.947870791,1,./sample_data/nii_patch/case_5.nii.gz
