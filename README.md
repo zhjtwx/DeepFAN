@@ -58,7 +58,7 @@ The first column (mask_img) here stores the path of the cut patch (which is also
 
 | p_1 | p_2 | label | file_name |
 | :----- | :-----: | -----: | -----: |
-| 0 | 0 | 0 | 1 |
+| 0.052129209 | 0.947870791 | 1 | ./sample_data/nii_patch/case_5.nii.gz |
 | ... | ... |  ... |  ... |
 
 Here, the first column (p_1) stores the probability that the model outputs benign results, the second column (p_2) stores the probability that the model outputs malignant results (p_1+p_2=1), and the third column (label) stores the benign and malignant labels of the case. Note: the labels of the input files are stored here. The fourth column (file_name) stores the file path of the patch of the case. Note: the file path of the input file is stored here.
