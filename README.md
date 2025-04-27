@@ -29,13 +29,13 @@ This article mainly introduces the training and reasoning of the main framework;
     python main_dfl_2scale.py config.py
     ```
     #### The main parameters are as following:
-    - --config: the path to the configuration file
-    #### configuration file:
+    - --config: Configuration file path, the configuration file path here is: ./config.py
+    #### configuration file(config.py):
     - train task: config.py
       - inference_mode = False
       - model_name = 'fusion'
-      - train_set_dir: Save the image name and label csv file path of the training data
-      - val_set_dirs: Save the image name and label csv file path of the val data
+      - train_set_dir: image name and label csv file path of training data, please refer to the format of './sample_data/deepfan_test.csv' file.
+      - val_set_dirs: image name and label csv file path of validation data, the format is the same as 'train_set_dir'.
       - mode_save_base_dir: Model output address
     - infer task: config.py
       - inference_mode = Ture
