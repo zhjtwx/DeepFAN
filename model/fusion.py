@@ -86,7 +86,7 @@ class FusionModel(BaseBackbone):
         vit_cls_mb, vit_nodes = self.vit(x)
         hf0, hf1, hf2, h0, h1, h2 = self.fine_grained(x)
         fine_grained_nodes = [h0, h1, h2]
-        all_nodes = torch.cat((vit_nodes + fine_grained_nodes)).view(batch_size, 12, 64)
+        all_nodes = torch.cat((torch.stack(vit_nodes, dim=1), torch.stack(fine_grained_nodes, dim=1)), dim=1)
         all_cls_mb = self.fc_all(all_nodes.view(batch_size, -1))
         x_attn, gcn_cla_mb = self.gcn(all_nodes)
         return gcn_cla_mb, vit_cls_mb, all_cls_mb, hf0, hf1, hf2
