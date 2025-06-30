@@ -59,7 +59,7 @@ def load_nii_path(load_fp):
     img_var = Variable(torch.unsqueeze(torch.unsqueeze(img_var, 0), 0))
     img_var1 = F.interpolate(img_var, size=(156, 156, 156), mode='trilinear',
                             align_corners=True)  # 需要修改，原始是(32, 256, 256)
-    img1 = torch.squeeze(img_var1).numpy()
+    img1 = torch.squeeze(img_var1).numpy().astype(np.float32)
     img1 = img1[np.newaxis, :, :, :]
     return img1
 
