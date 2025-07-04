@@ -7,18 +7,16 @@ import time
 from typing import List, Tuple, Set
 
 # 配置参数
-MIRROR_URL = "https://pypi.tuna.tsinghua.edu.cn/simple"  # 国内镜像源
-MAX_WORKERS = 8  # 并行安装的线程数
-TIMEOUT = 300  # 单个包安装超时时间(秒)
-LOG_DIR = "pip_test_logs111"  # 日志目录
+MIRROR_URL = "https://pypi.tuna.tsinghua.edu.cn/simple"
+MAX_WORKERS = 8
+TIMEOUT = 300 
+LOG_DIR = "pip_test_logs" 
 
 def clean_package_name(pkg: str) -> str:
-    """清理包名，移除版本约束"""
     return re.split(r'[=<>!~]', pkg)[0].strip()
 
 # def install_package(pkg: str) -> Tuple[str, bool, str]:
 def install_package(pkg: str, extra_args: List[str]) -> Tuple[str, bool, str]:
-    """安装单个包并返回结果"""
     clean_pkg = clean_package_name(pkg)
     start_time = time.time()
     
@@ -29,7 +27,7 @@ def install_package(pkg: str, extra_args: List[str]) -> Tuple[str, bool, str]:
         #     '--disable-pip-version-check',
         #     '--prefer-binary',
         #     '-i', MIRROR_URL,
-        #     '--progress-bar', 'off'  # 关闭进度条可减少输出量
+        #     '--progress-bar', 'off' 
         # ]
 
         cmd = [
@@ -57,7 +55,7 @@ def install_package(pkg: str, extra_args: List[str]) -> Tuple[str, bool, str]:
         success = (
             "Successfully installed" in output or 
             "Requirement already satisfied" in output or
-            "Skipping" in output  # 某些情况下会跳过已安装的包
+            "Skipping" in output
         )
         
         # 记录详细日志
@@ -78,7 +76,6 @@ def install_package(pkg: str, extra_args: List[str]) -> Tuple[str, bool, str]:
         return (clean_pkg, False, f"{error_msg}\n总耗时: {elapsed:.2f}s")
 
 def read_requirements(file_path: str) -> List[str]:
-    """读取requirements.txt文件，返回清理后的包列表"""
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"未找到文件: {file_path}")
     
