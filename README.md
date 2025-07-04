@@ -15,8 +15,33 @@ Install dependencies: The requirements.txt file stores the installation packages
 ```
 pip install -r requirements.txt
 ```
+To mitigate potential runtime errors caused by dependency conflicts between packages, we recommend the following optimized installation procedure. This method ensures compatibility and significantly improves reliability. The standard installation approach using pip install -r requirements.txt may fail due to complex dependency requirements between packages. To address this, we've developed an enhanced installation methodology that:
+#### Optimized Installation Guide for DeepFAN
+1. Create Conda Environment
+```
+conda create -n deepfan python=3.6.13 -y
+conda activate deepfan
+```
+2. Upgrade Pip and Install System Dependencies
+```
+pip install --upgrade pip
+apt update && apt install -y libxml2 libgl1-mesa-glx  # Essential libraries
+```
+3. Install CUDA Toolkit
+```
+conda install -c conda-forge cudatoolkit=11.3 -y  # Use conda-forge for better compatibility
+```
+4. Install PyTorch with CUDA 11.3
+```
+pip install torch==1.10.0+cu113 torchvision==0.11.0+cu113 -f https://download.pytorch.org/whl/torch_stable.html
+```
+5. Install others
+```
+python pip.py
+```
 
-#### Usage
+
+### Usage
 This article mainly introduces the training and reasoning of the main framework; other individual modules can be adjusted according to the parameters of the paper.
 - deepFan model：All models are saved in the model folder. Fusion integrates the ViT module, Fine_Grained module and GCN module. The specific training and reasoning are as follows.
     ```
