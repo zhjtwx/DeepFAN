@@ -74,7 +74,7 @@ lmdb==1.4.1
 lxml==4.9.2
 Mako==1.1.6
 Markdown==3.3.7
-MarkupSafe @ file:///tmp/build/80754af9/markupsafe_1621528150516/work
+# MarkupSafe @ file:///tmp/build/80754af9/markupsafe_1621528150516/work
 matplotlib==3.3.4
 MedPy==0.4.0
 meshio==4.1.0
@@ -105,7 +105,7 @@ patsy==0.5.3
 pexpect==4.0.1
 pickle5==0.0.10
 Pillow==6.2.1
-platformdirs @ file:///tmp/build/80754af9/platformdirs_1638968569495/work
+# platformdirs @ file:///tmp/build/80754af9/platformdirs_1638968569495/work
 pluggy==0.13.0
 portalocker==2.3.0
 protobuf==3.19.6
@@ -117,7 +117,7 @@ pyasn1-modules==0.2.8
 pycocotools==2.0.0
 pycollada==0.7.2
 pycrypto==2.6.1
-pycuda @ file:///home/conda/feedstock_root/build_artifacts/pycuda_1617557199483/work
+# pycuda @ file:///home/conda/feedstock_root/build_artifacts/pycuda_1617557199483/work
 pycurl==7.43.0
 pydensecrf==1.0rc2
 pydicom==2.3.1
@@ -134,7 +134,7 @@ pytest==5.2.2
 pytest-runner==5.3.0
 python-dateutil==2.8.0
 python-systemd==0.0.9
-pytools @ file:///home/conda/feedstock_root/build_artifacts/pytools_1656247651513/work
+# pytools @ file:///home/conda/feedstock_root/build_artifacts/pytools_1656247651513/work
 pytz==2019.3
 pyvista==0.24.2
 PyWavelets==1.1.1
@@ -158,7 +158,7 @@ scooby==0.5.6
 setproctitle==1.1.10
 Shapely==1.8.5.post1
 SimpleITK==2.1.1.2
-six @ file:///tmp/build/80754af9/six_1644875935023/work
+# six @ file:///tmp/build/80754af9/six_1644875935023/work
 sklearn==0.0.post1
 ssh-import-id==5.5
 statsmodels==0.12.2
@@ -169,7 +169,7 @@ tensorboard==2.10.1
 tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.1
 tensorboardX==2.6
-tensorrt @ file:///mnt/users/package/TensorRT-8.0.1.6/python/tensorrt-8.0.1.6-cp36-none-linux_x86_64.whl
+# tensorrt @ file:///mnt/users/package/TensorRT-8.0.1.6/python/tensorrt-8.0.1.6-cp36-none-linux_x86_64.whl
 termcolor==1.1.0
 terminaltables==3.1.0
 tetgen==0.4.4
@@ -187,7 +187,7 @@ traceback2==1.4.0
 triangle==20220202
 trimesh==3.9.35
 typing==3.7.4.1
-typing_extensions @ file:///opt/conda/conda-bld/typing_extensions_1647553014482/work
+# typing_extensions @ file:///opt/conda/conda-bld/typing_extensions_1647553014482/work
 unittest2==1.1.0
 urllib3==1.26.7
 vtk==8.1.2
