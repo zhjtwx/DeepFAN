@@ -102,7 +102,7 @@ def read_requirements(file_path: str) -> List[str]:
     
     return packages, extra_args
 
-def analyze_installation(requirements_file: str = "requirements.txt"):
+def analyze_installation(requirements_file: str = "requirements_test.txt"):
     """主安装函数"""
     # 准备日志目录
     os.makedirs(LOG_DIR, exist_ok=True)
